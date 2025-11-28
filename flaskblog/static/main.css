@@ -1,0 +1,111 @@
+/* Color Palette:
+- Primary/Header: #2F4F4F (Deep Forest Green - Dark and soft)
+- Accent/Link Hover: #A9A9A9 (Dark Gray/Stone)
+- Background: #EFEBE9 (Light Taupe/Warm Gray - Very soft)
+- Text: #404040 (Near-Black, but softer Dark Gray)
+- Border/Metadata: #D4CCC8 (Pale Grayish Brown)
+*/
+
+/* 1. FONT IMPORT (Assuming this CSS file is linked correctly) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+    /* Set the default modern font */
+    font-family: 'Inter', sans-serif; 
+    
+    /* Updated: Light Taupe/Warm Gray Background (Very soft) */
+    background: #EFEBE9; 
+    color: #404040; /* Dark Gray text */
+    margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    /* Richer, slightly darker headings */
+    color: #2F4F4F; /* Deep Forest Green for headings */
+}
+
+/* Header/Navbar Background */
+.bg-steel {
+    /* Updated: Deep Forest Green */
+    background-color: #2F4F4F; 
+}
+
+/* Navbar Links */
+.site-header .navbar-nav .nav-link {
+    /* Soft light text against the dark header */
+    color: #E8E8E8; 
+}
+
+.site-header .navbar-nav .nav-link:hover {
+    /* Softest white on hover */
+    color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+}
+
+/* Content Boxes (Cards) */
+.content-section {
+    /* Use a very light, soft cream background for the cards */
+    background: #FFFAF0; /* Floral White - softer than pure white */
+    padding: 15px 25px; 
+    /* Updated: Pale Grayish Brown border */
+    border: 1px solid #D4CCC8; 
+    border-radius: 8px; /* Slightly more rounded corners for softness */
+    margin-bottom: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Deeper shadow for elevation */
+}
+
+/* Article Title Links */
+.article-title {
+    color: #2F4F4F; /* Headings match header color */
+    font-weight: 600;
+}
+
+a.article-title:hover {
+    /* Updated: Dark Gray/Stone for accent */
+    color: #A9A9A9; 
+    text-decoration: none;
+}
+
+.article-content {
+    white-space: pre-line;
+}
+
+.article-img {
+    height: 65px;
+    width: 65px;
+    margin-right: 16px;
+}
+
+/* Metadata Separator */
+.article-metadata {
+    padding-bottom: 5px;
+    margin-bottom: 8px; 
+    /* Updated: Pale Grayish Brown line */
+    border-bottom: 1px solid #D4CCC8; 
+    font-size: 0.85rem; /* Slightly smaller font for metadata */
+}
+
+.article-metadata a:hover {
+    color: #A9A9A9; /* Use accent color for metadata link hover */
+    text-decoration: none;
+}
+
+.article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.account-img {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+}
+
+.account-heading {
+    font-size: 2.5rem;
+}
