@@ -1,9 +1,11 @@
+import os
+
 class Config:
-    # This key is required for Flask sessions and security
-    SECRET_KEY = '5791628bb0b13ce0c676dfde280ba245' 
-    
-    # This sets up the SQLAlchemy database to use the sqlite file
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///site.db'
-    
-    # We are adding this now for the pagination feature!
-    POSTS_PER_PAGE = 5
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI', 'sqlite:///site.db')
+
+    MAIL_SERVER = 'smtp.googlemail.com'
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = os.environ.get('EMAIL_USER')
+    MAIL_PASSWORD = os.environ.get('EMAIL_PASS')

@@ -1,12 +1,17 @@
 from datetime import datetime
-from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-from flaskblog import db, login_manager, app
+from itsdangerous import URLSafeTimedSerializer, BadSignature, SignatureExpired
+from flask import current_app
+from flaskblog import db, login_manager
 from flask_login import UserMixin
 
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+
+def get_serializer():
+    return URLSafeTimedSerializer(current_app.config['SECRET_KEY'], salt="reset-token")
 
 
 class User(db.Model, UserMixin):
@@ -18,17 +23,17 @@ class User(db.Model, UserMixin):
     posts = db.relationship('Post', backref='author', lazy=True)
 
     def get_reset_token(self, expires_sec=1800):
-        s = Serializer(app.config['SECRET_KEY'], expires_sec)
-        return s.dumps({'user_id': self.id}).decode('utf-8')
+        s = get_serializer()
+        return s.dumps({"user_id": self.id})
 
     @staticmethod
-    def verify_reset_token(token):
-        s = Serializer(app.config['SECRET_KEY'])
+    def verify_reset_token(token, expires_sec=1800):
+        s = get_serializer()
         try:
-            user_id = s.loads(token)['user_id']
-        except:
+            data = s.loads(token, max_age=expires_sec)
+        except (SignatureExpired, BadSignature):
             return None
-        return User.query.get(user_id)
+        return User.query.get(data.get("user_id"))
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
