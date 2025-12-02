@@ -1,0 +1,18 @@
+VIRTUAL ENVIRONMENT
+
+/flaskblog/
+/venv/
+
+ENVIRONMENT VARIABLES (CRITICAL)
+
+.env
+
+PYTHON BYTECODE AND CACHE
+
+pycache/
+*.pyc
+
+DATABASE FILES
+
+*.db
+/migrations/
